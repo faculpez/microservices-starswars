@@ -8,16 +8,3 @@ module.exports = {
   Film: conn.model("Film", require("./schemas/filmSchema")),
   Planet: conn.model("Planet", require("./schemas/planetSchema")),
 };
-
-// Character.find()
-//   .populate("homeworld", ["_id", "name"])
-//   .populate("films", ["_id", "title"])
-//   .then((res) => console.log(res[0]));
-
-// Film.find().populate("characters").populate("planets", ["_id", "name"]);
-// // .then((res) => console.log(res));
-
-// Planet.find()
-//   .populate("residents", ["_id", "name"])
-//   .populate("films", ["_id", "title"]);
-// // .then((res) => console.log(res));
