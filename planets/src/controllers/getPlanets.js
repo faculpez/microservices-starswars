@@ -1,6 +1,14 @@
-const Planets = require("../data");
+const Planet = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  const planets = await Planets.list();
-  res.status(200).json(planets);
+  try {
+    const getResponse = await Planet.list();
+    const planets = getResponse.data;
+
+    response(res, 200, planets);
+  } catch (error) {
+    console.error(error);
+    response(res, 500, { error: "Internal Server Error" });
+  }
 };

@@ -1,6 +1,14 @@
-const Films = require("../data");
+const Film = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  const films = await Films.list();
-  res.status(200).json(films);
+  try {
+    const getResponse = await Film.list();
+    const films = getResponse.data;
+
+    response(res, 200, films);
+  } catch (error) {
+    console.error(error);
+    response(res, 500, { error: "Internal Server Error" });
+  }
 };
